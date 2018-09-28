@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.a{
+				width: 450px;
+			}
+			.a img{
+				width: 100%;
+			}
+			.b{
+				width: 150px;
+				height: 150px;
+				background: url(img/FE.jpg) no-repeat;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				/*background-position: -100px,-100px;*/
+				border-radius: 50%;
+				margin: -75px 0 0 -75px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="a"><img src="img/FE.jpg"/><div class="b"></div></div>
+		<script type="text/javascript">
+			var sa=document.getElementsByClassName("a")[0];
+			var sb=document.getElementsByClassName("b")[0];
+			
+			sa.addEventListener("mousemove",move);
+			function move(event){
+				
+				var event=event||window.event;
+				console.log(event.pageX,event.pageY);
+				sb.style.left=event.pageX+"px";
+				sb.style.top=event.pageY+"px";
+				
+				var bx=sa.getBoundingClientRect().left-sb.getBoundingClientRect().left;
+			    var by=sa.getBoundingClientRect().top-sb.getBoundingClientRect().top;
+			    if(event.pageX<=450&&event.pageY<=278){
+			    	sb.style.opacity=1
+			    sb.style.backgroundPositionX=2.442*bx-75+"px";
+			    sb.style.backgroundPositionY=2.442*by-75+"px";
+			}
+			    else {sb.style.opacity=0}
+			    }
+			sa.addEventListener("mouseover",move);
+		</script>
+	</body>
+</html>
+
